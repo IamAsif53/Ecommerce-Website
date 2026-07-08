@@ -15,7 +15,10 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://YOUR-VERCEL-DOMAIN.vercel.app"],
+    origin: [
+      "http://localhost:5173",
+      "https://ecommerce-website-o25dvpryq-jiaul-asifs-projects.vercel.app",
+    ],
     credentials: true,
   }),
 );
