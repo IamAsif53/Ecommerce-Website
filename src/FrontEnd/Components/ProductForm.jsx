@@ -32,7 +32,7 @@ function ProductForm({
         uploadData.append("image", imageFile);
 
         const uploadRes = await axios.post(
-          "${import.meta.env.VITE_API_URL}/api/upload",
+          `${import.meta.env.VITE_API_URL}/api/upload`,
           uploadData,
         );
 

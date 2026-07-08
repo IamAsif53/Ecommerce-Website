@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "${import.meta.env.VITE_API_URL}/api/orders";
+const API_URL = `${import.meta.env.VITE_API_URL}/api/orders`;
 
 export const createOrder = async (orderData) => {
   const token =
