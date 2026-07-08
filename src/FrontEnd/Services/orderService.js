@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/orders";
+const API_URL = "${import.meta.env.VITE_API_URL}/api/orders";
 
 export const createOrder = async (orderData) => {
   const token =
@@ -58,7 +58,7 @@ export const getUserOrders = async () => {
   return response.data;
 };
 
-const PAYMENT_API = "http://localhost:5000/api/payment";
+const PAYMENT_API = "${import.meta.env.VITE_API_URL}/api/payment";
 
 export const initiatePayment = async (paymentData) => {
   const token =
