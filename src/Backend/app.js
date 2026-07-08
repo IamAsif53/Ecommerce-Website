@@ -17,7 +17,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://ecommerce-website-o25dvpryq-jiaul-asifs-projects.vercel.app",
+      "https://ecommerce-website-mu-khaki.vercel.app",
     ],
     credentials: true,
   }),
