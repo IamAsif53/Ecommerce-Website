@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import { AuthContext } from "../Context/AuthContext";
 
-import { getUserOrders } from "../services/orderService";
+import { getUserOrders } from "../Services/orderService";
 
 function MyOrders() {
   const { user } = useContext(AuthContext);

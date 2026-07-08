@@ -5,7 +5,7 @@ import { FaEye, FaEyeSlash, FaEnvelope, FaLock } from "react-icons/fa";
 
 import { AuthContext } from "../Context/AuthContext";
 
-import { loginUser } from "../services/authService";
+import { loginUser } from "../Services/authService";
 
 import toast from "react-hot-toast";
 import { ChatContext } from "../Context/ChatContext";

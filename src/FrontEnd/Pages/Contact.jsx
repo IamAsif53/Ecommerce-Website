@@ -1,7 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-import { sendContactMessage } from "../services/contactService";
+import { sendContactMessage } from "../Services/contactService";
 function Contact() {
   const [formData, setFormData] = useState({
     name: "",

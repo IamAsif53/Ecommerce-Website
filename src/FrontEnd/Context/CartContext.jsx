@@ -10,7 +10,7 @@ import {
   decreaseQuantity as decreaseQuantityAPI,
   removeFromCart as removeFromCartAPI,
   clearCart as clearCartAPI,
-} from "../services/cartService";
+} from "../Services/cartService";
 
 export const CartContext = createContext();
 

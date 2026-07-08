@@ -5,7 +5,7 @@ import { FaEye, FaEyeSlash, FaEnvelope, FaLock, FaUser } from "react-icons/fa";
 
 import toast from "react-hot-toast";
 
-import { registerUser } from "../services/authService";
+import { registerUser } from "../Services/authService";
 
 function Register() {
   //---------------------------------------------------------

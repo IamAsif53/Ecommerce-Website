@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import ProductTable from "../../Components/ProductTable";
 import ProductForm from "../../Components/ProductForm";
-import { getProducts, deleteProduct } from "../../services/productService";
+import { getProducts, deleteProduct } from "../../Services/productService";
 import ProductStats from "../../Components/ProductStats";
 import DeleteModal from "../../Components/DeleteModal";
 import { useRef } from "react";

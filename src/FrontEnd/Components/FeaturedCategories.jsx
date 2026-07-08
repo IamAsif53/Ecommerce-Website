@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getProducts } from "../services/productService";
+import { getProducts } from "../Services/productService";
 
 function FeaturedCategories() {
   const [categories, setCategories] = useState([]);

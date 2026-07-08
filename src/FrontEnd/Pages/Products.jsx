@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../Components/ProductCard";
-import { getProducts } from "../services/productService";
+import { getProducts } from "../Services/productService";
 import { FaSearch } from "react-icons/fa";
 
 function Products() {

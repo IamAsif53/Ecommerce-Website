@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { CartContext } from "../Context/CartContext";
 import { AuthContext } from "../Context/AuthContext";
 
-import { createOrder, initiatePayment } from "../services/orderService";
+import { createOrder, initiatePayment } from "../Services/orderService";
 import CheckoutForm from "../Components/CheckoutForm";
 import OrderSummary from "../Components/OrderSummary";
 import PaymentMethod from "../Components/PaymentMethod";

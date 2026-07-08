@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
-import { getProducts } from "../services/productService";
+import { getProducts } from "../Services/productService";
 import ProductCard from "./ProductCard";
 import { CartContext } from "../Context/CartContext";
 import { AuthContext } from "../Context/AuthContext";

@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { useContext } from "react";
 import { SettingsContext } from "../../Context/SettingsContext";
 
-import { getSettings, updateSettings } from "../../services/settingsService";
+import { getSettings, updateSettings } from "../../Services/settingsService";
 
 const Settings = () => {
   const [settings, setSettings] = useState({

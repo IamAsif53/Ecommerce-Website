@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-import { createProduct, updateProduct } from "../services/productService";
+import { createProduct, updateProduct } from "../Services/productService";
 
 function ProductForm({
   fetchProducts,

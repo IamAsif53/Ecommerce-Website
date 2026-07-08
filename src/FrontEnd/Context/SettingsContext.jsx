@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getSettings } from "../services/settingsService";
+import { getSettings } from "../Services/settingsService";
 import { AuthContext } from "./AuthContext";
 
 export const SettingsContext = createContext();
