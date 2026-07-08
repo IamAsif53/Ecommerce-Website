@@ -4,11 +4,11 @@ import {
   createProduct,
   getProducts,
   getProductById,
-} from "../Controllers/ProductController.js";
+} from "../controllers/ProductController.js";
 import {
   updateProduct,
   deleteProduct,
-} from "../Controllers/ProductController.js";
+} from "../controllers/ProductController.js";
 
 const router = express.Router();
 

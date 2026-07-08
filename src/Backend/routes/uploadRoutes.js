@@ -1,6 +1,6 @@
 import express from "express";
 import multer from "multer";
-import cloudinary from "../Config/cloudinary.js";
+import cloudinary from "../config/cloudinary.js";
 
 const router = express.Router();
 
@@ -21,7 +21,7 @@ router.post("/", upload.single("image"), async (req, res) => {
     }
 
     const base64Image = `data:${req.file.mimetype};base64,${req.file.buffer.toString(
-      "base64"
+      "base64",
     )}`;
 
     const result = await cloudinary.uploader.upload(base64Image, {
