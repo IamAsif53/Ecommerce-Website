@@ -58,7 +58,7 @@ export const getUserOrders = async () => {
   return response.data;
 };
 
-const PAYMENT_API = "${import.meta.env.VITE_API_URL}/api/payment";
+const PAYMENT_API = `${import.meta.env.VITE_API_URL}/api/payment`;
 
 export const initiatePayment = async (paymentData) => {
   const token =
