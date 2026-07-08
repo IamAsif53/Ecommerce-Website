@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { changePassword } from "../Services/authService";
-import { getPasswordStrength } from "../utils/passwordStrength";
+import { getPasswordStrength } from "../Utils/passwordStrength";
 
 function ChangePassword() {
   const [formData, setFormData] = useState({
