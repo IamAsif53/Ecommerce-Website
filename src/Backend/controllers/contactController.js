@@ -1,4 +1,4 @@
-import transporter from "../config/mail.js";
+import client from "../config/mail.js";
 import Contact from "../models/Contact.js";
 
 // ==============================
@@ -29,38 +29,42 @@ export const sendContactMessage = async (req, res) => {
 
     // Email Content
 
-    await transporter.sendMail({
-      from: `"Techit Contact Form" <${process.env.EMAIL_USER}>`,
-
-      to: process.env.EMAIL_USER,
-
+    await client.send({
+      from: {
+        email: "hello@demomailtrap.com",
+        name: "Techit Contact Form",
+      },
+      to: [
+        {
+          email: "jiaulasif4877@gmail.com",
+        },
+      ],
       subject: `📩 New Contact Message: ${subject}`,
-
       html: `
-        <div style="font-family:Arial,sans-serif;padding:20px">
-          <h2>New Contact Form Submission</h2>
+    <div style="font-family:Arial,sans-serif;padding:20px">
+      <h2>New Contact Form Submission</h2>
 
-          <hr>
+      <hr>
 
-          <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Name:</strong> ${name}</p>
 
-          <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Email:</strong> ${email}</p>
 
-          <p><strong>Subject:</strong> ${subject}</p>
+      <p><strong>Subject:</strong> ${subject}</p>
 
-          <p><strong>Message:</strong></p>
+      <p><strong>Message:</strong></p>
 
-          <div style="padding:15px;background:#f5f5f5;border-radius:8px">
-            ${message.replace(/\n/g, "<br>")}
-          </div>
+      <div style="padding:15px;background:#f5f5f5;border-radius:8px">
+        ${message.replace(/\n/g, "<br>")}
+      </div>
 
-          <hr>
+      <hr>
 
-          <small>
-            This email was sent automatically from your Techit website.
-          </small>
-        </div>
-      `,
+      <small>
+        This email was sent automatically from your Techit website.
+      </small>
+    </div>
+  `,
     });
 
     res.status(201).json({
