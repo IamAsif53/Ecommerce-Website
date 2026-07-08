@@ -1,6 +1,6 @@
 import { Link, useLocation, useSearchParams, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getOrderById } from "../Services/orderService";
+import { getOrderById } from "../services/orderService";
 import { useContext } from "react";
 import toast from "react-hot-toast";
 import { CartContext } from "../Context/CartContext";

@@ -1,9 +1,9 @@
-import { generateAIResponse } from "../Services/cloudflareAIService.js";
+import { generateAIResponse } from "../services/cloudflareAIService.js";
 import Product from "../models/Product.js";
 import Settings from "../models/Settings.js";
 import ChatHistory from "../models/ChatHistory.js";
 import { extractSearchIntent } from "../utils/extractSearchIntent.js";
-import { extractIntent } from "../Services/intentService.js";
+import { extractIntent } from "../services/intentService.js";
 /*
 |--------------------------------------------------------------------------
 | Product Related Keywords

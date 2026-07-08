@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { clearChat as clearChatAPI } from "../Services/chatService";
+import { clearChat as clearChatAPI } from "../services/chatService";
 
 export const ChatContext = createContext();
 

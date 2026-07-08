@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { FiSend } from "react-icons/fi";
 import { ChatContext } from "../../Context/ChatContext";
-import { sendMessage } from "../../Services/chatService";
+import { sendMessage } from "../../services/chatService";
 
 function ChatInput() {
   const { addMessage, loading, setLoading } = useContext(ChatContext);

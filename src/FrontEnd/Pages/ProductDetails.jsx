@@ -16,7 +16,7 @@ import {
 import { CartContext } from "../Context/CartContext";
 import { AuthContext } from "../Context/AuthContext";
 
-import { getProductById, getProducts } from "../Services/productService";
+import { getProductById, getProducts } from "../services/productService";
 import Breadcrumb from "../Components/Breadcrumb";
 import ProductCard from "../Components/ProductCard";
 function ProductDetails() {

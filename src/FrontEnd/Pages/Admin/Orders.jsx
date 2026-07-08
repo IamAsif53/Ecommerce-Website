@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaSearch } from "react-icons/fa";
 
-import { getOrders, updateOrderStatus } from "../../Services/orderService";
+import { getOrders, updateOrderStatus } from "../../services/orderService";
 
 function AdminOrders() {
   const [orders, setOrders] = useState([]);

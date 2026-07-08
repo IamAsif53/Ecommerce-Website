@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getProducts } from "../Services/productService";
+import { getProducts } from "../services/productService";
 
 function HeroCarousel() {
   const [products, setProducts] = useState([]);

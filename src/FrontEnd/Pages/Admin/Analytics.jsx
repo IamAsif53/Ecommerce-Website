@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAnalytics } from "../../Services/analyticsService";
+import { getAnalytics } from "../../services/analyticsService";
 import {
   ResponsiveContainer,
   LineChart,

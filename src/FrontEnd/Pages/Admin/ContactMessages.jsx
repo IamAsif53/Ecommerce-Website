@@ -5,7 +5,7 @@ import {
   getAllMessages,
   markMessageAsRead,
   deleteMessage,
-} from "../../Services/contactAdminService";
+} from "../../services/contactAdminService";
 
 import toast from "react-hot-toast";
 

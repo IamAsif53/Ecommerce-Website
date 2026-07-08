@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
-import { updateProfile } from "../Services/authService";
+import { updateProfile } from "../services/authService";
 import toast from "react-hot-toast";
 import axios from "axios";
 function EditProfileModal({ isOpen, onClose, user }) {

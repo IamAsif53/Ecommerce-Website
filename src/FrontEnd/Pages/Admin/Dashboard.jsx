@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { getDashboardData } from "../../Services/dashboardService";
+import { getDashboardData } from "../../services/dashboardService";
 
 import DashboardStats from "../../Components/DashboardStats";
 
