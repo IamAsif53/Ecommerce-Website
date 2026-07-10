@@ -6,7 +6,7 @@ function MainLayout() {
     <div className="min-h-screen bg-[#0F1114] text-white">
       <Navbar />
 
-      <main className="max-w-7xl mx-auto px-5 py-6">
+      <main className="w-full">
         <Outlet />
       </main>
       <ChatWidget />

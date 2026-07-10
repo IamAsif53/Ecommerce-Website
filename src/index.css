@@ -18,3 +18,10 @@
   animation: float 5s ease-in-out infinite;
   will-change: transform;
 }
+
+html,
+body,
+#root {
+  width: 100%;
+  overflow-x: hidden;
+}

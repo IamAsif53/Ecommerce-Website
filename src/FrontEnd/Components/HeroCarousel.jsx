@@ -110,14 +110,14 @@ function HeroCarousel() {
 
   return (
     <div
-      className="relative flex justify-center items-center h-[620px]"
+      className="relative flex justify-center items-center h-auto lg:h-[620px] w-full overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Glow */}
 
       <div
-        className={`absolute w-[480px] h-[480px] rounded-full blur-[140px] opacity-20 transition-all duration-700 ${
+        className={`absolute w-[240px] h-[240px] lg:w-[480px] lg:h-[480px] rounded-full blur-[140px] opacity-20 transition-all duration-700 ${
           glowColors[currentSlide % glowColors.length]
         }`}
       ></div>
@@ -163,7 +163,7 @@ function HeroCarousel() {
       {/* Main Card */}
 
       <div
-        className={`relative z-20 bg-[#181B20] rounded-[32px] shadow-2xl border border-[#2A2F36] overflow-hidden w-[420px]
+        className={`relative z-20 bg-[#181B20] rounded-[32px] shadow-2xl border border-[#2A2F36] overflow-hidden w-full max-w-[340px] sm:max-w-[380px] lg:w-[420px]
   transition-all duration-500
   ${
     isAnimating ? "scale-95 opacity-0" : "scale-100 opacity-100 animate-float"
@@ -171,17 +171,17 @@ function HeroCarousel() {
       >
         {/* Image */}
 
-        <div className="h-[260px] flex items-center justify-center bg-gradient-to-b from-[#1E2229] to-[#181B20]">
+        <div className="h-[220px] lg:h-[260px] flex items-center justify-center bg-gradient-to-b from-[#1E2229] to-[#181B20]">
           <img
             src={currentProduct.image}
             alt={currentProduct.name}
-            className="max-h-[220px] object-contain transition duration-500 hover:scale-105"
+            className="max-h-[180px] lg:max-h-[220px]object-contain transition duration-500 hover:scale-105"
           />
         </div>
 
         {/* Content */}
 
-        <div className="p-8">
+        <div className="p-5 lg:p-8">
           {/* Category */}
 
           <p className="text-sm uppercase tracking-[3px] text-[#EF4444] font-semibold">
@@ -190,7 +190,7 @@ function HeroCarousel() {
 
           {/* Product Name */}
 
-          <h2 className="text-[32px] font-bold leading-tight mt-3 text-white">
+          <h2 className="text-2xl lg:text-[32px] font-bold leading-tight mt-3 text-white">
             {" "}
             {currentProduct.name}
           </h2>
@@ -205,7 +205,7 @@ function HeroCarousel() {
 
           {/* Price */}
 
-          <h3 className="text-4xl font-bold text-[#EF4444] mt-6">
+          <h3 className="text-3xl lg:text-4xl font-bold text-[#EF4444] mt-6">
             ${currentProduct.price}
           </h3>
 
@@ -213,7 +213,7 @@ function HeroCarousel() {
 
           <button
             onClick={() => navigate(`/products/${currentProduct._id}`)}
-            className="w-full mt-8 bg-[#EF4444] hover:bg-[#DC2626] text-white py-4 rounded-2xl font-semibold text-lg transition-all duration-300 hover:shadow-lg"
+            className="w-full mt-8 bg-[#EF4444] hover:bg-[#DC2626] text-white py-3 lg:py-4 rounded-2xl font-semibold text-base lg:text-lg transition-all duration-300 hover:shadow-lg"
           >
             View Details →
           </button>
@@ -261,7 +261,7 @@ function HeroCarousel() {
       </button>
       {/* Pagination */}
 
-      <div className="absolute bottom-6 flex gap-3">
+      <div className="absolute bottom-2 lg:bottom-6 flex gap-3">
         {products.map((_, index) => (
           <button
             key={index}
