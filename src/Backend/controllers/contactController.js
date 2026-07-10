@@ -31,7 +31,7 @@ export const sendContactMessage = async (req, res) => {
 
     const { data, error } = await resend.emails.send({
       from: "TechIT <onboarding@resend.dev>",
-      to: ["jiaulasif4877@gmail.com"],
+      to: ["u2104053@student.cuet.ac.bd"],
 
       subject: `📩 New Contact Message: ${subject}`,
 
