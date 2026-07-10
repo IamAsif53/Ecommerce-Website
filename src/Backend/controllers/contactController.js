@@ -1,4 +1,4 @@
-import client from "../config/mail.js";
+import resend from "../config/mail.js";
 import Contact from "../models/Contact.js";
 
 // ==============================
@@ -29,17 +29,12 @@ export const sendContactMessage = async (req, res) => {
 
     // Email Content
 
-    await client.send({
-      from: {
-        email: "hello@demomailtrap.com",
-        name: "Techit Contact Form",
-      },
-      to: [
-        {
-          email: "jiaulasif4877@gmail.com",
-        },
-      ],
+    const { data, error } = await resend.emails.send({
+      from: "TechIT <onboarding@resend.dev>",
+      to: ["jiaulasif4877@gmail.com"],
+
       subject: `📩 New Contact Message: ${subject}`,
+
       html: `
     <div style="font-family:Arial,sans-serif;padding:20px">
       <h2>New Contact Form Submission</h2>
@@ -61,11 +56,16 @@ export const sendContactMessage = async (req, res) => {
       <hr>
 
       <small>
-        This email was sent automatically from your Techit website.
+        This email was sent automatically from your TechIT website.
       </small>
     </div>
   `,
     });
+
+    if (error) {
+      console.error("Resend Error:", error);
+      throw new Error(error.message);
+    }
 
     res.status(201).json({
       success: true,
@@ -73,8 +73,7 @@ export const sendContactMessage = async (req, res) => {
       contact,
     });
   } catch (error) {
-    console.log(error);
-
+    console.error("Contact Email Error:", error);
     res.status(500).json({
       success: false,
       message: "Failed to send message",
