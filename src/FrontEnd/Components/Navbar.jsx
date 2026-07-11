@@ -115,9 +115,10 @@ function Navbar() {
               {mobileMenu ? <FiX size={22} /> : <FiMenu size={22} />}
             </button>
             {user ? (
-              <>
+              <div className="hidden md:flex items-center gap-3">
+                {/* Profile */}
                 <Link to="/profile" className="flex items-center gap-3 group">
-                  <div className="w-11 h-11 rounded-full overflow-hidden bg-[#181B20] border-2 border-[#EF4444] flex items-center justify-center transition-all duration-300 group-hover:border-[#DC2626]">
+                  <div className="w-10 h-10 lg:w-11 lg:h-11 rounded-full overflow-hidden bg-[#181B20] border-2 border-[#EF4444] flex items-center justify-center transition-all duration-300 group-hover:border-[#DC2626]">
                     {user?.avatar ? (
                       <img
                         src={user.avatar}
@@ -132,33 +133,35 @@ function Navbar() {
                   </div>
 
                   <div className="hidden lg:block">
-                    {" "}
                     <p className="font-semibold text-white group-hover:text-[#EF4444] transition-colors">
                       {user?.name}
                     </p>
+
                     <p className="text-sm text-gray-400">View Profile</p>
                   </div>
                 </Link>
 
+                {/* Admin */}
                 {user.role === "admin" && (
                   <Link
                     to="/admin"
-                    className="px-3 md:px-5 py-2 rounded-xl bg-[#181B20] border border-[#EF4444] text-[#EF4444] hover:bg-[#EF4444] hover:text-white transition-all duration-300"
+                    className="px-4 lg:px-5 py-2 rounded-xl bg-[#181B20] border border-[#EF4444] text-[#EF4444] hover:bg-[#EF4444] hover:text-white transition-all duration-300 whitespace-nowrap"
                   >
                     Admin Panel
                   </Link>
                 )}
 
+                {/* Logout */}
                 <button
                   onClick={() => {
                     logout();
                     refreshChat();
                   }}
-                  className="px-3 md:px-5 py-2 rounded-xl bg-[#EF4444] hover:bg-[#DC2626] text-white font-medium transition-all duration-300 shadow-lg shadow-red-500/20"
+                  className="px-4 lg:px-5 py-2 rounded-xl bg-[#EF4444] hover:bg-[#DC2626] text-white font-medium transition-all duration-300 shadow-lg shadow-red-500/20 whitespace-nowrap"
                 >
                   Logout
                 </button>
-              </>
+              </div>
             ) : (
               <div className="hidden md:flex items-center gap-3">
                 <Link
