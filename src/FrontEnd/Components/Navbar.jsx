@@ -2,31 +2,32 @@ import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import { CartContext } from "../Context/CartContext";
-import { FiShoppingCart } from "react-icons/fi";
+import { FiShoppingCart, FiMenu, FiX } from "react-icons/fi";
 import { SettingsContext } from "../Context/SettingsContext";
 import { ChatContext } from "../Context/ChatContext";
+import { useState } from "react";
 
 function Navbar() {
   const { user, logout } = useContext(AuthContext);
   const { refreshChat } = useContext(ChatContext);
   const { cartItems } = useContext(CartContext);
   const { settings } = useContext(SettingsContext);
-
+  const [mobileMenu, setMobileMenu] = useState(false);
   return (
     <nav className="sticky top-0 z-50 bg-[#111214]/95 backdrop-blur-xl border-b border-[#2A2F36] shadow-lg">
       {" "}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {" "}
-        <div className="flex justify-between items-center h-16 md:h-20">
+        <div className="flex justify-between items-center h-16 lg:h-20">
           {/* Logo */}
 
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 md:w-11 md:h-11 rounded-2xl bg-gradient-to-br from-[#EF4444] to-[#B91C1C] flex items-center justify-center shadow-lg shadow-red-500/30 transition-transform duration-300 group-hover:rotate-6">
+            <div className="w-10 h-10 lg:w-11 lg:h-11 rounded-2xl bg-gradient-to-br from-[#EF4444] to-[#B91C1C] flex items-center justify-center shadow-lg shadow-red-500/30 transition-transform duration-300 group-hover:rotate-6">
               <span className="text-white font-bold text-lg">T</span>
             </div>
 
             <div>
-              <h1 className="text-lg md:text-2xl font-extrabold tracking-tight">
+              <h1 className="text-xl lg:text-2xl font-extrabold tracking-tight">
                 <span className="text-white">
                   {settings?.storeName || "Tech IT"}
                 </span>
@@ -40,7 +41,7 @@ function Navbar() {
 
           {/* Navigation */}
 
-          <div className="flex items-center gap-1 lg:gap-2 bg-[#181B20] rounded-xl p-2 border border-[#2A2F36]">
+          <div className="hidden md:flex items-center gap-2 bg-[#181B20] rounded-xl p-2 border border-[#2A2F36]">
             <NavLink
               to="/"
               className={({ isActive }) =>
@@ -53,7 +54,6 @@ function Navbar() {
             >
               Home
             </NavLink>
-
             <NavLink
               to="/products"
               className={({ isActive }) =>
@@ -66,7 +66,6 @@ function Navbar() {
             >
               Products
             </NavLink>
-
             <NavLink
               to="/contact"
               className={({ isActive }) =>
@@ -79,7 +78,6 @@ function Navbar() {
             >
               Contact
             </NavLink>
-
             {user && (
               <NavLink
                 to="/my-orders"
@@ -97,7 +95,7 @@ function Navbar() {
           </div>
           {/* Right Side */}
 
-          <div className="flex items-center gap-2 md:gap-5">
+          <div className="flex items-center gap-3">
             <Link to="/cart" className="relative group">
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#181B20] border border-[#2A2F36] text-gray-300 flex items-center justify-center transition-all duration-300 hover:bg-[#EF4444] hover:text-white hover:border-[#EF4444]">
                 <FiShoppingCart className="text-lg md:text-xl md:text-2xl" />
@@ -109,7 +107,13 @@ function Navbar() {
                 </span>
               )}
             </Link>
-
+            {/* Mobile Hamburger */}
+            <button
+              onClick={() => setMobileMenu(!mobileMenu)}
+              className="md:hidden w-10 h-10 rounded-xl bg-[#181B20] border border-[#2A2F36] flex items-center justify-center text-white"
+            >
+              {mobileMenu ? <FiX size={22} /> : <FiMenu size={22} />}
+            </button>
             {user ? (
               <>
                 <Link to="/profile" className="flex items-center gap-3 group">
@@ -156,7 +160,7 @@ function Navbar() {
                 </button>
               </>
             ) : (
-              <>
+              <div className="hidden md:flex items-center gap-3">
                 <Link
                   to="/login"
                   className="text-gray-300 hover:text-[#EF4444] transition-colors"
@@ -170,11 +174,97 @@ function Navbar() {
                 >
                   Register
                 </Link>
-              </>
+              </div>
             )}
           </div>
         </div>
       </div>
+      {mobileMenu && (
+        <div className="md:hidden bg-[#181B20] border-t border-[#2A2F36]">
+          <NavLink
+            to="/"
+            onClick={() => setMobileMenu(false)}
+            className="block px-6 py-4 border-b border-[#2A2F36]"
+          >
+            Home
+          </NavLink>
+
+          <NavLink
+            to="/products"
+            onClick={() => setMobileMenu(false)}
+            className="block px-6 py-4 border-b border-[#2A2F36]"
+          >
+            Products
+          </NavLink>
+
+          <NavLink
+            to="/contact"
+            onClick={() => setMobileMenu(false)}
+            className="block px-6 py-4 border-b border-[#2A2F36]"
+          >
+            Contact
+          </NavLink>
+
+          {!user ? (
+            <>
+              <NavLink
+                to="/login"
+                onClick={() => setMobileMenu(false)}
+                className="block px-6 py-4 border-b border-[#2A2F36]"
+              >
+                Login
+              </NavLink>
+
+              <NavLink
+                to="/register"
+                onClick={() => setMobileMenu(false)}
+                className="block px-6 py-4"
+              >
+                Register
+              </NavLink>
+            </>
+          ) : (
+            <>
+              <NavLink
+                to="/profile"
+                onClick={() => setMobileMenu(false)}
+                className="block px-6 py-4 border-b border-[#2A2F36]"
+              >
+                Profile
+              </NavLink>
+
+              <NavLink
+                to="/my-orders"
+                onClick={() => setMobileMenu(false)}
+                className="block px-6 py-4 border-b border-[#2A2F36]"
+              >
+                My Orders
+              </NavLink>
+
+              {user.role === "admin" && (
+                <NavLink
+                  to="/admin"
+                  onClick={() => setMobileMenu(false)}
+                  className="block px-6 py-4 border-b border-[#2A2F36]"
+                >
+                  Admin Panel
+                </NavLink>
+              )}
+
+              <button
+                onClick={() => {
+                  logout();
+                  refreshChat();
+                  setMobileMenu(false);
+                }}
+                className="w-full text-left px-6 py-4 text-red-400"
+              >
+                Logout
+              </button>
+            </>
+          )}
+        </div>
+      )}
     </nav>
   );
 }
