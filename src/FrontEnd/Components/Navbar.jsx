@@ -182,89 +182,172 @@ function Navbar() {
           </div>
         </div>
       </div>
+      {/* ================= Mobile Menu ================= */}
       {mobileMenu && (
-        <div className="md:hidden bg-[#181B20] border-t border-[#2A2F36]">
-          <NavLink
-            to="/"
-            onClick={() => setMobileMenu(false)}
-            className="block px-6 py-4 border-b border-[#2A2F36]"
-          >
-            Home
-          </NavLink>
+        <div className="md:hidden absolute top-full left-0 w-full bg-[#111214]/98 backdrop-blur-2xl border-t border-[#2A2F36] shadow-2xl animate-in slide-in-from-top duration-300">
+          {/* User Info */}
+          {user && (
+            <div className="flex items-center gap-4 px-6 py-5 border-b border-[#2A2F36]">
+              <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#EF4444] bg-[#181B20] flex items-center justify-center">
+                {user.avatar ? (
+                  <img
+                    src={user.avatar}
+                    alt={user.name}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <span className="text-xl font-bold text-white">
+                    {user.name?.charAt(0).toUpperCase()}
+                  </span>
+                )}
+              </div>
 
-          <NavLink
-            to="/products"
-            onClick={() => setMobileMenu(false)}
-            className="block px-6 py-4 border-b border-[#2A2F36]"
-          >
-            Products
-          </NavLink>
+              <div>
+                <h3 className="text-white font-semibold text-lg">
+                  {user.name}
+                </h3>
 
-          <NavLink
-            to="/contact"
-            onClick={() => setMobileMenu(false)}
-            className="block px-6 py-4 border-b border-[#2A2F36]"
-          >
-            Contact
-          </NavLink>
+                <p className="text-sm text-gray-400">{user.email}</p>
+              </div>
+            </div>
+          )}
 
-          {!user ? (
-            <>
-              <NavLink
-                to="/login"
-                onClick={() => setMobileMenu(false)}
-                className="block px-6 py-4 border-b border-[#2A2F36]"
-              >
-                Login
-              </NavLink>
+          {/* Navigation */}
 
-              <NavLink
-                to="/register"
-                onClick={() => setMobileMenu(false)}
-                className="block px-6 py-4"
-              >
-                Register
-              </NavLink>
-            </>
-          ) : (
-            <>
-              <NavLink
-                to="/profile"
-                onClick={() => setMobileMenu(false)}
-                className="block px-6 py-4 border-b border-[#2A2F36]"
-              >
-                Profile
-              </NavLink>
+          <div className="py-2">
+            <NavLink
+              to="/"
+              onClick={() => setMobileMenu(false)}
+              className={({ isActive }) =>
+                `flex items-center px-6 py-4 transition ${
+                  isActive
+                    ? "bg-[#EF4444]/10 text-[#EF4444] border-l-4 border-[#EF4444]"
+                    : "text-gray-300 hover:bg-[#181B20]"
+                }`
+              }
+            >
+              🏠
+              <span className="ml-4 font-medium">Home</span>
+            </NavLink>
 
-              <NavLink
-                to="/my-orders"
-                onClick={() => setMobileMenu(false)}
-                className="block px-6 py-4 border-b border-[#2A2F36]"
-              >
-                My Orders
-              </NavLink>
+            <NavLink
+              to="/products"
+              onClick={() => setMobileMenu(false)}
+              className={({ isActive }) =>
+                `flex items-center px-6 py-4 transition ${
+                  isActive
+                    ? "bg-[#EF4444]/10 text-[#EF4444] border-l-4 border-[#EF4444]"
+                    : "text-gray-300 hover:bg-[#181B20]"
+                }`
+              }
+            >
+              🛍️
+              <span className="ml-4 font-medium">Products</span>
+            </NavLink>
 
-              {user.role === "admin" && (
+            <NavLink
+              to="/contact"
+              onClick={() => setMobileMenu(false)}
+              className={({ isActive }) =>
+                `flex items-center px-6 py-4 transition ${
+                  isActive
+                    ? "bg-[#EF4444]/10 text-[#EF4444] border-l-4 border-[#EF4444]"
+                    : "text-gray-300 hover:bg-[#181B20]"
+                }`
+              }
+            >
+              📞
+              <span className="ml-4 font-medium">Contact</span>
+            </NavLink>
+
+            {user && (
+              <>
                 <NavLink
-                  to="/admin"
+                  to="/profile"
                   onClick={() => setMobileMenu(false)}
-                  className="block px-6 py-4 border-b border-[#2A2F36]"
+                  className={({ isActive }) =>
+                    `flex items-center px-6 py-4 transition ${
+                      isActive
+                        ? "bg-[#EF4444]/10 text-[#EF4444] border-l-4 border-[#EF4444]"
+                        : "text-gray-300 hover:bg-[#181B20]"
+                    }`
+                  }
                 >
-                  Admin Panel
+                  👤
+                  <span className="ml-4 font-medium">Profile</span>
                 </NavLink>
-              )}
 
+                <NavLink
+                  to="/my-orders"
+                  onClick={() => setMobileMenu(false)}
+                  className={({ isActive }) =>
+                    `flex items-center px-6 py-4 transition ${
+                      isActive
+                        ? "bg-[#EF4444]/10 text-[#EF4444] border-l-4 border-[#EF4444]"
+                        : "text-gray-300 hover:bg-[#181B20]"
+                    }`
+                  }
+                >
+                  📦
+                  <span className="ml-4 font-medium">My Orders</span>
+                </NavLink>
+
+                {user.role === "admin" && (
+                  <NavLink
+                    to="/admin"
+                    onClick={() => setMobileMenu(false)}
+                    className={({ isActive }) =>
+                      `flex items-center px-6 py-4 transition ${
+                        isActive
+                          ? "bg-[#EF4444]/10 text-[#EF4444] border-l-4 border-[#EF4444]"
+                          : "text-gray-300 hover:bg-[#181B20]"
+                      }`
+                    }
+                  >
+                    ⚙️
+                    <span className="ml-4 font-medium">Admin Panel</span>
+                  </NavLink>
+                )}
+              </>
+            )}
+
+            {!user && (
+              <>
+                <NavLink
+                  to="/login"
+                  onClick={() => setMobileMenu(false)}
+                  className="flex items-center px-6 py-4 text-gray-300 hover:bg-[#181B20] transition"
+                >
+                  🔑
+                  <span className="ml-4 font-medium">Login</span>
+                </NavLink>
+
+                <NavLink
+                  to="/register"
+                  onClick={() => setMobileMenu(false)}
+                  className="flex items-center px-6 py-4 text-gray-300 hover:bg-[#181B20] transition"
+                >
+                  ✨<span className="ml-4 font-medium">Register</span>
+                </NavLink>
+              </>
+            )}
+          </div>
+
+          {/* Bottom Button */}
+
+          {user && (
+            <div className="p-5 border-t border-[#2A2F36]">
               <button
                 onClick={() => {
                   logout();
                   refreshChat();
                   setMobileMenu(false);
                 }}
-                className="w-full text-left px-6 py-4 text-red-400"
+                className="w-full py-3 rounded-xl bg-[#EF4444] hover:bg-red-600 transition text-white font-semibold shadow-lg shadow-red-500/20"
               >
                 Logout
               </button>
-            </>
+            </div>
           )}
         </div>
       )}
