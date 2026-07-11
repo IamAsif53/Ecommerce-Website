@@ -68,22 +68,22 @@ function ProductCard({ product }) {
     const category = product.category.toLowerCase();
 
     if (category.includes("earbud") || category.includes("audio")) {
-      return <MdHeadphones className="text-blue-600 text-xl" />;
+      return <MdHeadphones className="text-blue-600 text-lg md:text-xl" />;
     }
 
     if (category.includes("mobile")) {
-      return <MdPhoneIphone className="text-blue-600 text-xl" />;
+      return <MdPhoneIphone className="text-blue-600 text-lg md:text-xl" />;
     }
 
     if (category.includes("laptop")) {
-      return <MdLaptopMac className="text-blue-600 text-xl" />;
+      return <MdLaptopMac className="text-blue-600 text-lg md:text-xl" />;
     }
 
     if (category.includes("watch")) {
-      return <MdWatch className="text-blue-600 text-xl" />;
+      return <MdWatch className="text-blue-600 text-lg md:text-xl" />;
     }
 
-    return <MdVerified className="text-blue-600 text-xl" />;
+    return <MdVerified className="text-blue-600 text-lg md:text-xl" />;
   };
 
   //-------------------------------------------------------
@@ -136,14 +136,13 @@ function ProductCard({ product }) {
   }
 
   return (
-    <div className="group bg-[#181B20] rounded-3xl overflow-hidden border border-[#2A2F36] shadow-lg hover:shadow-red-500/10 hover:-translate-y-2 transition-all duration-500">
-      {" "}
+    <div className="group h-full bg-[#181B20] rounded-2xl md:rounded-3xl overflow-hidden border border-[#2A2F36] shadow-lg hover:shadow-red-500/10 hover:-translate-y-2 transition-all duration-500 flex flex-col">
       {/* Image */}
-      <div className="relative bg-gradient-to-br from-[#1D2128] via-[#181B20] to-[#15181D] h-60 flex items-center justify-center overflow-hidden">
+      <div className="relative bg-gradient-to-br from-[#1D2128] via-[#181B20] to-[#15181D] h-44 sm:h-52 md:h-60 flex items-center justify-center overflow-hidden">
         {/* Badge */}
 
         <div
-          className={`absolute top-4 left-4 ${badgeColor} text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow`}
+          className={`absolute top-4 left-4 ${badgeColor} text-white px-2.5 md:px-3 py-1 md:py-1.5 rounded-full text-[10px] sm:text-xs font-semibold shadow`}
         >
           {badge}
         </div>
@@ -152,9 +151,9 @@ function ProductCard({ product }) {
 
         <Link
           to={`/products/${product._id}`}
-          className="absolute top-4 right-4 w-10 h-10 rounded-full bg-[#22262D] border border-[#2A2F36] text-white flex items-center justify-center hover:bg-[#EF4444] transition-all duration-300"
+          className="absolute top-4 right-4 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-[#22262D] border border-[#2A2F36] text-white flex items-center justify-center hover:bg-[#EF4444] transition-all duration-300"
         >
-          <FaEye />
+          <FaEye className="text-sm md:text-base" />
         </Link>
 
         {/* Product Image */}
@@ -162,37 +161,32 @@ function ProductCard({ product }) {
         <img
           src={product.image}
           alt={product.name}
-          className="max-h-48 object-contain transition duration-500 group-hover:scale-110"
+          className=" w-full max-h-32 sm:max-h-40 md:max-h-48 object-contain transition duration-500 group-hover:scale-110"
         />
       </div>
       {/* Content */}
-      <div className="p-6">
+      <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-1">
         {/* Category */}
-
         <div className="flex items-center gap-2 mb-2">
           {getIcon()}
 
-          <span className="uppercase tracking-[2px] text-xs font-bold text-[#EF4444]">
+          <span className="uppercase tracking-wide md:tracking-[2px] text-[10px] sm:text-xs font-bold text-[#EF4444]">
             {product.category}
           </span>
         </div>
-
         {/* Product Name */}
-
-        <h2 className="text-2xl font-bold text-white line-clamp-2 min-h-[60px]">
+        <h2 className=" font-bold text-white line-clamp-2 text-lg sm:text-xl md:text-2xl min-h-[48px] md:min-h-[60px] ">
           {product.name}
         </h2>
-
         {/* Price + Stock */}
-
         <div className="flex justify-between items-end mt-5">
           <div>
-            <h3 className="text-3xl font-extrabold text-[#EF4444]">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#EF4444]">
               ${product.price}
             </h3>
 
             <p
-              className={`mt-2 text-sm font-semibold ${
+              className={`mt-2 text-xs sm:text-sm font-semibold ${
                 !inStock
                   ? "text-red-600"
                   : lowStock
@@ -209,35 +203,31 @@ function ProductCard({ product }) {
           </div>
 
           {lowStock && inStock && (
-            <span className="bg-orange-500/20 text-orange-400 text-xs px-3 py-1 rounded-full font-semibold">
+            <span className="bg-orange-500/20 text-orange-400 text-[10px] sm:text-xs px-2 sm:px-3 py-1 rounded-full font-semibold">
               Hurry!
             </span>
           )}
         </div>
-
         {/* Divider */}
-
-        <div className="border-t border-[#2A2F36] my-6"></div>
-
+        <div className="border-t border-[#2A2F36] my-4 md:my-6"></div>
         {/* Buttons */}
-
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-auto">
           <button
             onClick={handleAddToCart}
             disabled={!inStock}
-            className={`flex items-center justify-center gap-2 py-3 rounded-xl font-semibold transition-all duration-300 ${
+            className={`flex items-center justify-center gap-2 py-2.5 md:py-3 text-sm md:text-base rounded-xl font-semibold transition-all duration-300 ${
               !inStock
                 ? "bg-gray-300 text-gray-500 cursor-not-allowed"
                 : "bg-[#EF4444] text-white hover:bg-[#DC2626]"
             }`}
           >
             <FaShoppingCart />
-            {inStock ? "Add To Cart" : "Unavailable"}
+            {inStock ? "Add to Cart" : "Unavailable"}
           </button>
 
           <Link
             to={`/products/${product._id}`}
-            className="flex items-center justify-center gap-2 py-3 rounded-xl border border-[#2A2F36] hover:border-[#EF4444] hover:text-[#EF4444] transition-all duration-300 font-semibold text-gray-300"
+            className="flex items-center justify-center gap-2 py-2.5 md:py-3 text-sm md:text-base rounded-xl border border-[#2A2F36] hover:border-[#EF4444] hover:text-[#EF4444] transition-all duration-300 font-semibold text-gray-300"
           >
             Details
             <FaBolt className="text-sm" />
