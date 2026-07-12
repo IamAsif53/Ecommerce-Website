@@ -7,7 +7,7 @@ function ReviewSection({ product }) {
         {/* Header */}
         <div className="mb-8">
           <span className="uppercase tracking-[4px] text-[#EF4444] font-semibold text-sm">
-            Customer Feedback
+            Customers Feedback
           </span>
 
           <h2 className="text-4xl font-extrabold text-white mt-3">

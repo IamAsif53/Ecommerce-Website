@@ -481,8 +481,7 @@ function ProductDetails() {
             </div>
           </div>
         </div>
-
-        <ReviewSection product={product} />
+        <ReviewSection productId={product._id} />
 
         {/* ================================= */}
 

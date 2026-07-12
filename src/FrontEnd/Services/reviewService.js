@@ -14,6 +14,7 @@ export const getProductReviews = async (productId, limit = null) => {
 
   return response.data;
 };
+console.log("API_URL:", API_URL);
 
 // Add review
 export const addReview = async (reviewData) => {
