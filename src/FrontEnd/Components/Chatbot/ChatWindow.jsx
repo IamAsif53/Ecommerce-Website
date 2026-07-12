@@ -26,6 +26,13 @@ function ChatWindow() {
       return JSON.parse(saved);
     }
 
+    if (window.innerWidth < 768) {
+      return {
+        x: 10,
+        y: 10,
+      };
+    }
+
     return {
       x: window.innerWidth - 410,
       y: window.innerHeight - 720,
@@ -46,6 +53,8 @@ function ChatWindow() {
   });
 
   const handleMouseDown = (e) => {
+    if (window.innerWidth < 768) return;
+
     if (e.target.closest("button") || e.target.closest("textarea")) {
       return;
     }
@@ -64,9 +73,12 @@ function ChatWindow() {
     const newX = e.clientX - dragOffset.current.x;
     const newY = e.clientY - dragOffset.current.y;
 
+    const maxX = window.innerWidth - 390;
+    const maxY = window.innerHeight - 120;
+
     setPosition({
-      x: newX,
-      y: newY,
+      x: Math.max(0, Math.min(newX, maxX)),
+      y: Math.max(0, Math.min(newY, maxY)),
     });
   };
 
@@ -132,59 +144,44 @@ function ChatWindow() {
         top: position.y,
       }}
       className="
-      fixed
-      z-[9999]
+fixed
+z-[9999]
 
-      w-[380px]
-      h-[650px]
+w-[95vw]
+max-w-[380px]
 
-      rounded-3xl
+h-[85vh]
+max-h-[650px]
 
-      bg-[#111214]
+rounded-2xl md:rounded-3xl
 
-      border
-      border-[#2A2F36]
+bg-[#111214]
+border border-[#2A2F36]
+shadow-[0_20px_60px_rgba(0,0,0,0.55)]
+overflow-hidden
 
-      shadow-[0_20px_60px_rgba(0,0,0,0.55)]
-
-      overflow-hidden
-
-      flex
-      flex-col
-
-      transition-shadow
-      duration-300
-    "
+flex flex-col
+transition-shadow duration-300
+"
     >
       {/* ================= HEADER ================= */}
 
       <div
         onMouseDown={handleMouseDown}
         className="
-        h-20
-
-        px-6
-
-        cursor-move
-        select-none
-
-        bg-[#181B20]
-
-        border-b
-        border-[#2A2F36]
-
-        flex
-        items-center
-        justify-between
-      "
+h-16 md:h-20
+px-4 md:px-6
+cursor-move
+select-none
+bg-[#181B20]
+border-b border-[#2A2F36]
+flex items-center justify-between
+"
       >
         <div className="flex items-center gap-4">
           <div
             className="
-            w-12
-            h-12
-
-            rounded-full
+           w-10 h-10 md:w-12 md:h-12 rounded-full
 
             bg-gradient-to-br
             from-[#EF4444]
@@ -202,7 +199,9 @@ function ChatWindow() {
           </div>
 
           <div>
-            <h2 className="text-white font-bold text-lg">Techit AI</h2>
+            <h2 className="text-white font-bold text-base md:text-lg">
+              Techit AI
+            </h2>
 
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-green-500"></span>
@@ -261,8 +260,8 @@ function ChatWindow() {
 
         overflow-y-auto
 
-        px-5
-        py-5
+        px-3 md:px-5
+        py-3 md:py-5
 
         bg-[#111214]
 
@@ -273,8 +272,8 @@ function ChatWindow() {
           <div className="h-full flex flex-col items-center justify-center text-center">
             <div
               className="
-              w-20
-              h-20
+             w-16 h-16 md:w-20 md:h-20
+             text-2xl md:text-3xl
 
               rounded-full
 
@@ -287,7 +286,7 @@ function ChatWindow() {
               justify-center
 
               text-white
-              text-3xl
+             
 
               mb-5
             "
@@ -295,11 +294,11 @@ function ChatWindow() {
               🤖
             </div>
 
-            <h2 className="text-xl font-bold text-white">
+            <h2 className="text-lg md:text-xl font-bold text-white">
               Welcome to Techit AI
             </h2>
 
-            <p className="text-gray-400 mt-3 text-sm leading-7 max-w-[260px]">
+            <p className="text-gray-400 mt-3 text-xs md:text-sm leading-6 md:leading-7 max-w-[260px]">
               Ask me about products, prices, shipping, warranty, recommendations
               or anything related to our store.
             </p>
@@ -321,8 +320,7 @@ function ChatWindow() {
 
       <div
         className="
-        p-4
-
+        p-3 md:p-4
         border-t
 
         border-[#2A2F36]
