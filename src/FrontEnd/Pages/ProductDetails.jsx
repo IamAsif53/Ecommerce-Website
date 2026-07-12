@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
+import ReviewSection from "../Components/Reviews/ReviewSection";
 
 import {
   FaShoppingCart,
@@ -480,6 +481,8 @@ function ProductDetails() {
             </div>
           </div>
         </div>
+
+        <ReviewSection product={product} />
 
         {/* ================================= */}
 
