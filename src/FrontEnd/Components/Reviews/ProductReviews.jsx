@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 
-import ReviewCard from "../Components/Reviews/ReviewCard";
-import { getProductReviews, getReviewSummary } from "../Services/reviewService";
-
+import ReviewCard from "./ReviewCard";
+import {
+  getProductReviews,
+  getReviewSummary,
+} from "../../Services/reviewService";
 function ProductReviews() {
   const { id } = useParams();
   const navigate = useNavigate();
