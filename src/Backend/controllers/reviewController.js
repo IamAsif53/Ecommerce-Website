@@ -137,3 +137,45 @@ export const getProductReviews = async (req, res) => {
     });
   }
 };
+
+// ======================================
+// Get Review Summary
+// ======================================
+export const getReviewSummary = async (req, res) => {
+  try {
+    const { productId } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(productId)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid product ID.",
+      });
+    }
+
+    const reviews = await Review.find({ product: productId });
+
+    const totalReviews = reviews.length;
+
+    let averageRating = 0;
+
+    if (totalReviews > 0) {
+      averageRating =
+        reviews.reduce((sum, review) => sum + review.rating, 0) / totalReviews;
+
+      averageRating = Number(averageRating.toFixed(1));
+    }
+
+    res.status(200).json({
+      success: true,
+      averageRating,
+      totalReviews,
+    });
+  } catch (error) {
+    console.error("Get Review Summary Error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Server Error.",
+    });
+  }
+};

@@ -4,16 +4,26 @@ import RatingSummary from "./RatingSummary";
 import ReviewForm from "./ReviewForm";
 import ReviewList from "./ReviewList";
 
-import { getProductReviews } from "../../Services/reviewService";
+import {
+  getProductReviews,
+  getReviewSummary,
+} from "../../Services/reviewService";
 
 function ReviewSection({ product }) {
   const [reviews, setReviews] = useState([]);
   const [loadingReviews, setLoadingReviews] = useState(true);
 
-  // Safety Check
+  const [summary, setSummary] = useState({
+    averageRating: 0,
+    totalReviews: 0,
+  });
+
   if (!product) return null;
 
+  // ============================
   // Fetch Reviews
+  // ============================
+
   const fetchReviews = async () => {
     try {
       setLoadingReviews(true);
@@ -28,13 +38,35 @@ function ReviewSection({ product }) {
     }
   };
 
+  // ============================
+  // Fetch Rating Summary
+  // ============================
+
+  const fetchSummary = async () => {
+    try {
+      const data = await getReviewSummary(product._id);
+
+      setSummary({
+        averageRating: data.averageRating,
+        totalReviews: data.totalReviews,
+      });
+    } catch (error) {
+      console.error("Error fetching review summary:", error);
+    }
+  };
+
   useEffect(() => {
     fetchReviews();
+    fetchSummary();
   }, [product._id]);
 
-  // Called after submitting a review
+  // ============================
+  // After Review Submission
+  // ============================
+
   const handleReviewAdded = () => {
     fetchReviews();
+    fetchSummary();
   };
 
   return (
@@ -61,8 +93,8 @@ function ReviewSection({ product }) {
 
         <div className="mb-8">
           <RatingSummary
-            averageRating={product.rating || 0}
-            totalReviews={product.numReviews || 0}
+            averageRating={summary.averageRating}
+            totalReviews={summary.totalReviews}
           />
         </div>
 
