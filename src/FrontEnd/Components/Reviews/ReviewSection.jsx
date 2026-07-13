@@ -1,51 +1,57 @@
 import React from "react";
+import RatingSummary from "./RatingSummary";
 
 function ReviewSection({ product }) {
   return (
-    <section className="mt-16">
-      <div className="bg-[#181B20] border border-[#2A2F36] rounded-3xl p-8">
+    <section className="mt-12 lg:mt-16">
+      <div className="bg-[#181B20] border border-[#2A2F36] rounded-2xl lg:rounded-3xl p-5 sm:p-6 lg:p-8">
         {/* Header */}
         <div className="mb-8">
-          <span className="uppercase tracking-[4px] text-[#EF4444] font-semibold text-sm">
-            Customers Feedback
+          <span className="uppercase tracking-[2px] sm:tracking-[3px] lg:tracking-[4px] text-[#EF4444] font-semibold text-xs sm:text-sm">
+            Customer Feedback
           </span>
 
-          <h2 className="text-4xl font-extrabold text-white mt-3">
+          <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
             Ratings & Reviews
           </h2>
 
-          <p className="text-gray-400 mt-3">
+          <p className="mt-4 text-sm sm:text-base text-gray-400 leading-7 max-w-3xl">
             Share your experience with this product and help other customers
             make better purchasing decisions.
           </p>
         </div>
 
         {/* Rating Summary */}
-        <div className="bg-[#111214] border border-[#2A2F36] rounded-2xl p-6 mb-8">
-          <h3 className="text-2xl font-bold text-white">Overall Rating</h3>
-
-          <p className="text-gray-400 mt-2">
-            Average rating and total reviews will appear here.
-          </p>
+        <div className="mb-8">
+          <RatingSummary
+            averageRating={product?.rating || 0}
+            totalReviews={product?.numReviews || 0}
+          />
         </div>
 
         {/* Review Form */}
-        <div className="bg-[#111214] border border-[#2A2F36] rounded-2xl p-6 mb-8">
-          <h3 className="text-2xl font-bold text-white">Write a Review</h3>
+        <div className="bg-[#111214] border border-[#2A2F36] rounded-2xl p-5 sm:p-6 lg:p-8 mb-8">
+          <h3 className="text-xl sm:text-2xl font-bold text-white">
+            Write a Review
+          </h3>
 
-          <p className="text-gray-400 mt-2">Review form will appear here.</p>
+          <p className="mt-2 text-sm sm:text-base text-gray-400">
+            Review form will appear here.
+          </p>
         </div>
 
         {/* Recent Reviews */}
-        <div className="bg-[#111214] border border-[#2A2F36] rounded-2xl p-6">
-          <h3 className="text-2xl font-bold text-white mb-4">Recent Reviews</h3>
+        <div className="bg-[#111214] border border-[#2A2F36] rounded-2xl p-5 sm:p-6 lg:p-8">
+          <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">
+            Recent Reviews
+          </h3>
 
-          <p className="text-gray-400">
+          <p className="text-sm sm:text-base text-gray-400">
             Latest customer reviews will appear here.
           </p>
 
-          <div className="mt-6">
-            <button className="px-6 py-3 rounded-xl bg-[#EF4444] hover:bg-[#DC2626] transition text-white font-semibold">
+          <div className="mt-6 flex justify-start">
+            <button className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#EF4444] hover:bg-[#DC2626] transition-all duration-300 text-white font-semibold">
               View All Reviews
             </button>
           </div>
