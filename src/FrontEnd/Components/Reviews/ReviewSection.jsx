@@ -1,7 +1,10 @@
-import React from "react";
 import RatingSummary from "./RatingSummary";
 import ReviewForm from "./ReviewForm";
+
 function ReviewSection({ product }) {
+  // Safety check
+  if (!product) return null;
+
   return (
     <section className="mt-12 lg:mt-16">
       <div className="bg-[#181B20] border border-[#2A2F36] rounded-2xl lg:rounded-3xl p-5 sm:p-6 lg:p-8">
@@ -15,7 +18,7 @@ function ReviewSection({ product }) {
             Ratings & Reviews
           </h2>
 
-          <p className="mt-4 text-sm sm:text-base text-gray-400 leading-7 max-w-3xl">
+          <p className="mt-4 max-w-3xl text-sm sm:text-base leading-7 text-gray-400">
             Share your experience with this product and help other customers
             make better purchasing decisions.
           </p>
@@ -24,19 +27,24 @@ function ReviewSection({ product }) {
         {/* Rating Summary */}
         <div className="mb-8">
           <RatingSummary
-            averageRating={product?.rating || 0}
-            totalReviews={product?.numReviews || 0}
+            averageRating={product.rating || 0}
+            totalReviews={product.numReviews || 0}
           />
         </div>
 
         {/* Review Form */}
         <div className="mb-8">
-          <ReviewForm productId={product._id} />
+          <ReviewForm
+            productId={product?._id}
+            onReviewAdded={() => {
+              // We'll implement this in the next step
+            }}
+          />
         </div>
 
         {/* Recent Reviews */}
         <div className="bg-[#111214] border border-[#2A2F36] rounded-2xl p-5 sm:p-6 lg:p-8">
-          <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">
+          <h3 className="mb-4 text-xl sm:text-2xl font-bold text-white">
             Recent Reviews
           </h3>
 
@@ -44,8 +52,8 @@ function ReviewSection({ product }) {
             Latest customer reviews will appear here.
           </p>
 
-          <div className="mt-6 flex justify-start">
-            <button className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#EF4444] hover:bg-[#DC2626] transition-all duration-300 text-white font-semibold">
+          <div className="mt-6">
+            <button className="w-full sm:w-auto rounded-xl bg-[#EF4444] px-6 py-3 font-semibold text-white transition-all duration-300 hover:bg-[#DC2626]">
               View All Reviews
             </button>
           </div>
