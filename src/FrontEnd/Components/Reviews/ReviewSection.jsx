@@ -1,6 +1,6 @@
 import React from "react";
 import RatingSummary from "./RatingSummary";
-
+import ReviewForm from "./ReviewForm";
 function ReviewSection({ product }) {
   return (
     <section className="mt-12 lg:mt-16">
@@ -30,14 +30,8 @@ function ReviewSection({ product }) {
         </div>
 
         {/* Review Form */}
-        <div className="bg-[#111214] border border-[#2A2F36] rounded-2xl p-5 sm:p-6 lg:p-8 mb-8">
-          <h3 className="text-xl sm:text-2xl font-bold text-white">
-            Write a Review
-          </h3>
-
-          <p className="mt-2 text-sm sm:text-base text-gray-400">
-            Review form will appear here.
-          </p>
+        <div className="mb-8">
+          <ReviewForm productId={product._id} />
         </div>
 
         {/* Recent Reviews */}
