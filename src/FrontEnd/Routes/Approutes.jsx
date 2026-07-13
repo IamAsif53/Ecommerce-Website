@@ -24,6 +24,7 @@ import OrderSuccess from "../Pages/OrderSuccess";
 import Profile from "../Pages/Profile";
 import Contact from "../Pages/Contact";
 import ContactMessages from "../Pages/Admin/ContactMessages";
+import ProductReviews from "../Components/Reviews/ProductReviews";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "products/:id",
         element: <ProductDetails />,
+      },
+      {
+        path: "products/:id/reviews",
+        element: <ProductReviews />,
       },
       {
         path: "cart",

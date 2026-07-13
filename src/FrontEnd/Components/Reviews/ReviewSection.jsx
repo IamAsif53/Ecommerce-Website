@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import RatingSummary from "./RatingSummary";
 import ReviewForm from "./ReviewForm";
@@ -10,6 +11,8 @@ import {
 } from "../../Services/reviewService";
 
 function ReviewSection({ product }) {
+  const navigate = useNavigate();
+
   const [reviews, setReviews] = useState([]);
   const [loadingReviews, setLoadingReviews] = useState(true);
 
@@ -117,7 +120,10 @@ function ReviewSection({ product }) {
           <ReviewList reviews={reviews} loading={loadingReviews} />
 
           <div className="mt-8 flex justify-center">
-            <button className="w-full sm:w-auto rounded-xl bg-[#EF4444] px-6 py-3 font-semibold text-white transition-all duration-300 hover:bg-[#DC2626]">
+            <button
+              onClick={() => navigate(`/products/${product._id}/reviews`)}
+              className="w-full sm:w-auto rounded-xl bg-[#EF4444] px-6 py-3 font-semibold text-white transition-all duration-300 hover:bg-[#DC2626] hover:scale-105"
+            >
               View All Reviews
             </button>
           </div>
