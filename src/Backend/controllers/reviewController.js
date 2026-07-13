@@ -64,6 +64,22 @@ export const addReview = async (req, res) => {
       comment: comment.trim(),
     });
 
+    // ===========================
+    // Update Product Rating
+    // ===========================
+
+    const reviews = await Review.find({ product });
+
+    const numReviews = reviews.length;
+
+    const averageRating =
+      reviews.reduce((total, item) => total + item.rating, 0) / numReviews;
+
+    await Product.findByIdAndUpdate(product, {
+      rating: Number(averageRating.toFixed(1)),
+      numReviews,
+    });
+
     // Populate User Information
     review = await review.populate("user", "name avatar");
 

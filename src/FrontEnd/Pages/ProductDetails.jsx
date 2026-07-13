@@ -189,24 +189,6 @@ function ProductDetails() {
               {product.name}
             </h1>
 
-            {/* Rating */}
-
-            <div className="flex items-center gap-3 mt-6">
-              <div className="flex text-yellow-400 text-xl">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <FaStar key={star} />
-                ))}
-              </div>
-
-              <span className="font-semibold text-white">
-                {Number(product.rating).toFixed(1)}
-              </span>
-
-              <span className="text-gray-400">
-                ({product.numReviews} Reviews)
-              </span>
-            </div>
-
             {/* Price */}
 
             <div className="flex items-end gap-5 mt-8">
@@ -426,22 +408,6 @@ function ProductDetails() {
 
                 <span className="font-semibold text-white">
                   {product.discount}%
-                </span>
-              </div>
-
-              <div className="flex justify-between border-b border-[#2A2F36] pb-3">
-                <span className="text-gray-400">Rating</span>
-
-                <span className="font-semibold text-yellow-400">
-                  ⭐ {Number(product.rating).toFixed(1)}
-                </span>
-              </div>
-
-              <div className="flex justify-between border-b border-[#2A2F36] pb-3">
-                <span className="text-gray-400">Reviews</span>
-
-                <span className="font-semibold text-white">
-                  {product.numReviews}
                 </span>
               </div>
 
