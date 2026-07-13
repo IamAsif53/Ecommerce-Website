@@ -73,11 +73,10 @@ function ReviewSection({ product }) {
   };
 
   return (
-    <section className="mt-12 lg:mt-16">
-      <div className="bg-[#181B20] border border-[#2A2F36] rounded-2xl lg:rounded-3xl p-5 sm:p-6 lg:p-8">
+    <section>
+      <div className="bg-[#181B20] border border-[#2A2F36] rounded-2xl p-4 sm:p-5 lg:p-6">
         {/* Header */}
-
-        <div className="mb-8">
+        <div className="hidden">
           <span className="uppercase tracking-[2px] sm:tracking-[3px] lg:tracking-[4px] text-[#EF4444] font-semibold text-xs sm:text-sm">
             Customer Feedback
           </span>
@@ -91,27 +90,21 @@ function ReviewSection({ product }) {
             make better purchasing decisions.
           </p>
         </div>
-
         {/* Rating Summary */}
-
-        <div className="mb-8">
+        <div className="mb-6">
           <RatingSummary
             averageRating={summary.averageRating}
             totalReviews={summary.totalReviews}
           />
         </div>
-
         {/* Review Form */}
-
-        <div className="mb-8">
+        <div className="mb-6">
           <ReviewForm
             productId={product._id}
             onReviewAdded={handleReviewAdded}
           />
         </div>
-
         {/* Recent Reviews */}
-
         <div className="bg-[#111214] border border-[#2A2F36] rounded-2xl p-5 sm:p-6 lg:p-8">
           <h3 className="mb-6 text-xl sm:text-2xl font-bold text-white">
             Recent Reviews

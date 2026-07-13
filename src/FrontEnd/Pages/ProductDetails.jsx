@@ -137,21 +137,19 @@ function ProductDetails() {
       : null;
 
   return (
-    <div className="min-h-screen bg-[#111214] py-12 text-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <div className="min-h-screen bg-[#111214] py-8 lg:py-10 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <Breadcrumb productName={product.name} />
-
         {/* Hero Section */}
-
-        <div className="mt-8 grid lg:grid-cols-2 gap-14 items-start">
+        <div className="mt-8 grid lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-10 items-start">
           {/* Left : Product Image */}
 
-          <div className="bg-[#181B20] border border-[#2A2F36] rounded-3xl p-8 shadow-xl">
-            <div className="relative bg-[#111214] rounded-2xl flex justify-center items-center h-[520px] overflow-hidden">
+          <div className="bg-[#181B20] border border-[#2A2F36] rounded-2xl p-5 shadow-lg">
+            <div className="relative bg-[#111214] rounded-xl flex justify-center items-center h-[340px] sm:h-[380px] lg:h-[430px] overflow-hidden">
               {/* Badge */}
 
               <span
-                className={`absolute top-6 left-6 ${badgeColor} text-white px-5 py-2 rounded-full text-sm font-semibold shadow-lg`}
+                className={`absolute top-4 left-4 ${badgeColor} text-white px-4 py-1.5 rounded-full text-xs font-semibold shadow`}
               >
                 {badge}
               </span>
@@ -159,7 +157,7 @@ function ProductDetails() {
               {/* Discount */}
 
               {product.discount > 0 && (
-                <span className="absolute top-6 right-6 bg-[#EF4444] text-white px-4 py-2 rounded-full font-semibold shadow-lg">
+                <span className="absolute top-4 right-4 bg-[#EF4444] text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow">
                   {product.discount}% OFF
                 </span>
               )}
@@ -167,7 +165,7 @@ function ProductDetails() {
               <img
                 src={product.image}
                 alt={product.name}
-                className="max-h-[430px] object-contain transition duration-500 hover:scale-105"
+                className="max-h-[260px] sm:max-h-[320px] lg:max-h-[360px] object-contain transition duration-300 hover:scale-105"
               />
             </div>
           </div>
@@ -177,27 +175,27 @@ function ProductDetails() {
           <div>
             {/* Category */}
 
-            <div className="inline-flex items-center gap-2 bg-[#181B20] border border-[#2A2F36] text-[#EF4444] px-4 py-2 rounded-full">
+            <div className="inline-flex items-center gap-2 bg-[#181B20] border border-[#2A2F36] text-[#EF4444] px-3 py-1.5 rounded-full">
               <FaTag />
 
-              <span className="font-semibold">{product.category}</span>
+              <span className="font-semibold text-sm">{product.category}</span>
             </div>
 
             {/* Name */}
 
-            <h1 className="text-5xl font-extrabold text-white mt-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mt-5 leading-tight">
               {product.name}
             </h1>
 
             {/* Price */}
 
-            <div className="flex items-end gap-5 mt-8">
-              <h2 className="text-5xl font-extrabold text-[#EF4444]">
+            <div className="flex flex-wrap items-end gap-4 mt-6">
+              <h2 className="text-4xl sm:text-5xl font-extrabold text-[#EF4444]">
                 ${product.price}
               </h2>
 
               {oldPrice && (
-                <span className="text-2xl text-gray-500 line-through">
+                <span className="text-xl text-gray-500 line-through mb-1">
                   ${oldPrice}
                 </span>
               )}
@@ -205,26 +203,26 @@ function ProductDetails() {
 
             {/* Description */}
 
-            <p className="mt-8 text-gray-300 leading-8 text-lg">
+            <p className="mt-5 text-gray-300 leading-7 text-base">
               {product.description}
             </p>
 
             {/* Quick Information */}
 
-            <div className="mt-10 grid sm:grid-cols-2 gap-5">
-              <div className="bg-[#181B20] border border-[#2A2F36] rounded-2xl p-5">
-                <p className="text-sm text-gray-400">Brand</p>
+            <div className="mt-6 grid grid-cols-2 gap-4">
+              <div className="bg-[#181B20] border border-[#2A2F36] rounded-xl p-4">
+                <p className="text-xs text-gray-400">Brand</p>
 
-                <h3 className="text-xl font-bold text-white mt-2">
+                <h3 className="text-lg font-bold text-white mt-1">
                   {product.brand || "Unknown"}
                 </h3>
               </div>
 
-              <div className="bg-[#181B20] border border-[#2A2F36] rounded-2xl p-5">
-                <p className="text-sm text-gray-400">Availability</p>
+              <div className="bg-[#181B20] border border-[#2A2F36] rounded-xl p-4">
+                <p className="text-xs text-gray-400">Availability</p>
 
                 <h3
-                  className={`text-xl font-bold mt-2 ${
+                  className={`text-lg font-bold mt-1 ${
                     !inStock
                       ? "text-red-500"
                       : lowStock
@@ -240,18 +238,18 @@ function ProductDetails() {
                 </h3>
               </div>
 
-              <div className="bg-[#181B20] border border-[#2A2F36] rounded-2xl p-5">
-                <p className="text-sm text-gray-400">Sold</p>
+              <div className="bg-[#181B20] border border-[#2A2F36] rounded-xl p-4">
+                <p className="text-xs text-gray-400">Sold</p>
 
-                <h3 className="text-xl font-bold text-white mt-2">
+                <h3 className="text-lg font-bold text-white mt-1">
                   {product.sold}
                 </h3>
               </div>
 
-              <div className="bg-[#181B20] border border-[#2A2F36] rounded-2xl p-5">
-                <p className="text-sm text-gray-400">Category</p>
+              <div className="bg-[#181B20] border border-[#2A2F36] rounded-xl p-4">
+                <p className="text-xs text-gray-400">Category</p>
 
-                <h3 className="text-xl font-bold text-white mt-2">
+                <h3 className="text-lg font-bold text-white mt-1">
                   {product.category}
                 </h3>
               </div>
@@ -259,14 +257,14 @@ function ProductDetails() {
 
             {/* Action Buttons */}
 
-            <div className="grid sm:grid-cols-2 gap-4 mt-10">
+            <div className="grid sm:grid-cols-2 gap-3 mt-6">
               <button
                 onClick={handleAddToCart}
                 disabled={!inStock}
-                className={`flex items-center justify-center gap-3 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 ${
+                className={`flex items-center justify-center gap-2 py-3 rounded-xl text-base font-semibold transition-all duration-300 ${
                   !inStock
                     ? "bg-[#2A2F36] text-gray-500 cursor-not-allowed"
-                    : "bg-[#EF4444] hover:bg-[#DC2626] text-white shadow-lg shadow-red-500/20 hover:shadow-red-500/40"
+                    : "bg-[#EF4444] hover:bg-[#DC2626] text-white shadow-lg shadow-red-500/20"
                 }`}
               >
                 <FaShoppingCart />
@@ -276,7 +274,7 @@ function ProductDetails() {
 
               <Link
                 to="/checkout"
-                className={`flex items-center justify-center py-4 rounded-2xl text-lg font-semibold border transition-all duration-300 ${
+                className={`flex items-center justify-center py-3 rounded-xl text-base font-semibold border transition-all duration-300 ${
                   !inStock
                     ? "pointer-events-none opacity-50 border-[#2A2F36]"
                     : "border-[#EF4444] text-[#EF4444] hover:bg-[#EF4444] hover:text-white"
@@ -288,65 +286,71 @@ function ProductDetails() {
 
             {/* Trust Information */}
 
-            <div className="mt-10 bg-[#181B20] border border-[#2A2F36] rounded-3xl p-6">
-              <h3 className="text-2xl font-bold text-white mb-6">
+            <div className="mt-6 bg-[#181B20] border border-[#2A2F36] rounded-2xl p-5">
+              <h3 className="text-xl font-bold text-white mb-5">
                 Why Buy From TechIT?
               </h3>
 
-              <div className="space-y-5">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-red-500/15 flex items-center justify-center">
-                    <FaTruck className="text-[#EF4444] text-xl" />
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-red-500/15 flex items-center justify-center">
+                    <FaTruck className="text-[#EF4444]" />
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-white">Free Delivery</h4>
+                    <h4 className="font-semibold text-white text-sm">
+                      Free Delivery
+                    </h4>
 
-                    <p className="text-gray-400 text-sm">
+                    <p className="text-gray-400 text-xs">
                       Free shipping on eligible orders.
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-green-500/15 flex items-center justify-center">
-                    <FaShieldAlt className="text-green-400 text-xl" />
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-green-500/15 flex items-center justify-center">
+                    <FaShieldAlt className="text-green-400" />
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-white">Secure Payment</h4>
+                    <h4 className="font-semibold text-white text-sm">
+                      Secure Payment
+                    </h4>
 
-                    <p className="text-gray-400 text-sm">
+                    <p className="text-gray-400 text-xs">
                       100% secure encrypted checkout.
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-orange-500/15 flex items-center justify-center">
-                    <FaUndoAlt className="text-orange-400 text-xl" />
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-orange-500/15 flex items-center justify-center">
+                    <FaUndoAlt className="text-orange-400" />
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-white">Easy Return</h4>
+                    <h4 className="font-semibold text-white text-sm">
+                      Easy Return
+                    </h4>
 
-                    <p className="text-gray-400 text-sm">
+                    <p className="text-gray-400 text-xs">
                       Hassle-free return within 7 days.
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-red-500/15 flex items-center justify-center">
-                    <FaFire className="text-[#EF4444] text-xl" />
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-red-500/15 flex items-center justify-center">
+                    <FaFire className="text-[#EF4444]" />
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-white">
+                    <h4 className="font-semibold text-white text-sm">
                       Genuine Products
                     </h4>
 
-                    <p className="text-gray-400 text-sm">
+                    <p className="text-gray-400 text-xs">
                       Original products sourced directly from trusted brands.
                     </p>
                   </div>
@@ -355,31 +359,41 @@ function ProductDetails() {
             </div>
           </div>
         </div>
-
+        {/* ================================= */}
         {/* Description & Specifications */}
-
-        <div className="grid lg:grid-cols-3 gap-8 mt-14">
+        {/* ================================= */}
+        <div className="grid lg:grid-cols-[2fr_1fr] gap-6 mt-10">
           {/* Description */}
 
-          <div className="lg:col-span-2 bg-[#181B20] border border-[#2A2F36] rounded-3xl p-8">
-            <h2 className="text-3xl font-bold text-white mb-6">
-              Product Description
-            </h2>
+          <div className="bg-[#181B20] border border-[#2A2F36] rounded-2xl p-5 sm:p-6">
+            <div className="flex items-center justify-between mb-5">
+              <h2 className="text-2xl font-bold text-white">
+                Product Description
+              </h2>
 
-            <p className="text-gray-300 leading-8 text-lg">
+              <span className="text-xs uppercase tracking-[3px] text-[#EF4444] font-semibold">
+                Details
+              </span>
+            </div>
+
+            <p className="text-gray-300 text-[15px] leading-7">
               {product.description}
             </p>
           </div>
 
           {/* Specifications */}
 
-          <div className="bg-[#181B20] border border-[#2A2F36] rounded-3xl p-8">
-            <h2 className="text-2xl font-bold text-white mb-6">
-              Specifications
-            </h2>
+          <div className="bg-[#181B20] border border-[#2A2F36] rounded-2xl p-5 sm:p-6">
+            <div className="flex items-center justify-between mb-5">
+              <h2 className="text-2xl font-bold text-white">Specifications</h2>
 
-            <div className="space-y-5">
-              <div className="flex justify-between border-b border-[#2A2F36] pb-3">
+              <span className="text-xs uppercase tracking-[3px] text-[#EF4444] font-semibold">
+                Product
+              </span>
+            </div>
+
+            <div className="space-y-4 text-sm">
+              <div className="flex justify-between items-center border-b border-[#2A2F36] pb-3">
                 <span className="text-gray-400">Brand</span>
 
                 <span className="font-semibold text-white">
@@ -387,7 +401,7 @@ function ProductDetails() {
                 </span>
               </div>
 
-              <div className="flex justify-between border-b border-[#2A2F36] pb-3">
+              <div className="flex justify-between items-center border-b border-[#2A2F36] pb-3">
                 <span className="text-gray-400">Category</span>
 
                 <span className="font-semibold text-white">
@@ -395,7 +409,7 @@ function ProductDetails() {
                 </span>
               </div>
 
-              <div className="flex justify-between border-b border-[#2A2F36] pb-3">
+              <div className="flex justify-between items-center border-b border-[#2A2F36] pb-3">
                 <span className="text-gray-400">Price</span>
 
                 <span className="font-semibold text-[#EF4444]">
@@ -403,7 +417,7 @@ function ProductDetails() {
                 </span>
               </div>
 
-              <div className="flex justify-between border-b border-[#2A2F36] pb-3">
+              <div className="flex justify-between items-center border-b border-[#2A2F36] pb-3">
                 <span className="text-gray-400">Discount</span>
 
                 <span className="font-semibold text-white">
@@ -411,13 +425,13 @@ function ProductDetails() {
                 </span>
               </div>
 
-              <div className="flex justify-between border-b border-[#2A2F36] pb-3">
+              <div className="flex justify-between items-center border-b border-[#2A2F36] pb-3">
                 <span className="text-gray-400">Sold</span>
 
                 <span className="font-semibold text-white">{product.sold}</span>
               </div>
 
-              <div className="flex justify-between border-b border-[#2A2F36] pb-3">
+              <div className="flex justify-between items-center border-b border-[#2A2F36] pb-3">
                 <span className="text-gray-400">Stock</span>
 
                 <span
@@ -433,7 +447,7 @@ function ProductDetails() {
                 </span>
               </div>
 
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <span className="text-gray-400">Status</span>
 
                 <span
@@ -447,53 +461,71 @@ function ProductDetails() {
             </div>
           </div>
         </div>
-
-        {/* Reviews Section */}
-        <ReviewSection product={product} />
-
         {/* ================================= */}
+        {/* Customer Reviews */}
+        {/* ================================= */}
+        <section className="mt-12 lg:mt-14">
+          <div className="mb-6">
+            <span className="uppercase tracking-[3px] text-[#EF4444] text-xs font-semibold">
+              Customer Experience
+            </span>
 
+            <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+              Ratings & Reviews
+            </h2>
+
+            <p className="mt-2 text-sm sm:text-base text-gray-400 max-w-2xl">
+              Read genuine customer feedback and share your own experience with
+              this product.
+            </p>
+          </div>
+
+          <ReviewSection product={product} />
+        </section>
+        {/* ================================= */}
         {/* Related Products */}
-
         {/* ================================= */}
+        <section className="mt-14 lg:mt-16">
+          {/* Section Header */}
 
-        <div className="mt-20">
-          <div className="flex justify-between items-center mb-10">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
             <div>
-              <span className="uppercase tracking-[4px] text-[#EF4444] font-semibold text-sm">
-                More Products
+              <span className="uppercase tracking-[3px] text-[#EF4444] text-xs font-semibold">
+                Explore More
               </span>
 
-              <h2 className="text-4xl font-extrabold text-white mt-3">
-                You May Also Like
+              <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+                Related Products
               </h2>
 
-              <p className="text-gray-400 mt-3">
-                More products from the same category
+              <p className="mt-2 text-sm sm:text-base text-gray-400">
+                Discover similar products from the same category.
               </p>
             </div>
           </div>
 
-          {relatedProducts.length === 0 ? (
-            <div className="bg-[#181B20] border border-[#2A2F36] rounded-3xl py-16 text-center">
-              <div className="text-6xl mb-4">📦</div>
+          {/* Products */}
 
-              <h3 className="text-2xl font-bold text-white">
+          {relatedProducts.length === 0 ? (
+            <div className="bg-[#181B20] border border-[#2A2F36] rounded-2xl py-12 px-6 text-center">
+              <div className="text-5xl mb-4">📦</div>
+
+              <h3 className="text-xl sm:text-2xl font-bold text-white">
                 No Related Products
               </h3>
 
-              <p className="text-gray-400 mt-3">
+              <p className="text-gray-400 mt-3 text-sm sm:text-base">
                 We couldn't find similar products right now.
               </p>
             </div>
           ) : (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
               {relatedProducts.map((item) => (
                 <ProductCard key={item._id} product={item} />
               ))}
             </div>
           )}
-        </div>
+        </section>
       </div>
     </div>
   );
